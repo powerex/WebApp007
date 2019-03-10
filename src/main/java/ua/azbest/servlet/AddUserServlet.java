@@ -4,31 +4,19 @@ import ua.azbest.model.User;
 import ua.azbest.util.Utils;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class AddUserServlet extends HttpServlet {
-    private Map<Integer, User> users;
+public class AddUserServlet extends BaseServlet {
 
     private AtomicInteger id;
 
     @Override
     public void init() throws ServletException {
-
-        final Object users = getServletContext().getAttribute("users");
-        if (users == null || !(users instanceof ConcurrentHashMap)) {
-            throw new IllegalStateException("You're repo does not initialize!");
-        } else {
-            this.users = (ConcurrentHashMap<Integer, User>) users;
-        }
-
+        super.init();
         id = new AtomicInteger(2);
-
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
