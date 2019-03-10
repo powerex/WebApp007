@@ -1,6 +1,7 @@
 package ua.azbest.servlet;
 
 import ua.azbest.model.User;
+import ua.azbest.util.Utils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,14 +11,14 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class GetIndexPageServlet extends HttpServlet {
-
+public class DeleteUserServlet extends HttpServlet {
     private Map<Integer, User> users;
 
     @Override
     public void init() throws ServletException {
 
         final Object users = getServletContext().getAttribute("users");
+
         if (users == null || !(users instanceof ConcurrentHashMap)) {
             throw new IllegalStateException("You're repo does not initialize!");
         } else {
@@ -25,11 +26,15 @@ public class GetIndexPageServlet extends HttpServlet {
         }
     }
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        req.setAttribute("users", users.values());
-        req.getRequestDispatcher("/WEB-INF/view/index.jsp").forward(req, resp);
+        req.setCharacterEncoding("UTF-8");
+
+        if (Utils.idIsNumber(req)) {
+            users.remove(Integer.valueOf(req.getParameter("id")));
+        }
+
+        resp.sendRedirect(req.getContextPath() + "/");
     }
 }
