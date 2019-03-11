@@ -70,4 +70,38 @@
         <servlet-name>JsonFormServlet</servlet-name>
         <servlet-class>ua.azbest.servlet.json.JsonFormServlet</servlet-class>
     </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>FilterServlet</servlet-name>
+        <url-pattern>/filter</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>FilterServlet</servlet-name>
+        <servlet-class>ua.azbest.servlet.GetFilteredServlet</servlet-class>
+    </servlet>
+
+    <!--Encoding filter UTF-8 for all requests-->
+    <filter>
+        <filter-name>EncodingRequestFilter</filter-name>
+        <filter-class>ua.azbest.servlet.filter.EncodingRequestFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>EncodingRequestFilter</filter-name>
+        <url-pattern>/filter</url-pattern>
+    </filter-mapping>
+
+
+    <!--Encoding filter UTF-8 for all requests-->
+    <filter>
+        <filter-name>EncodingResponseFilter</filter-name>
+        <filter-class>ua.azbest.servlet.filter.EncodingResponseFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>EncodingResponseFilter</filter-name>
+        <url-pattern>/filter</url-pattern>
+    </filter-mapping>
 </web-app>
