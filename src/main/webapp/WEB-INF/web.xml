@@ -82,6 +82,16 @@
         <servlet-class>ua.azbest.servlet.GetFilteredServlet</servlet-class>
     </servlet>
 
+    <servlet-mapping>
+        <servlet-name>SessionServlet</servlet-name>
+        <url-pattern>/session</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SessionServlet</servlet-name>
+        <servlet-class>ua.azbest.servlet.SessionServlet</servlet-class>
+    </servlet>
+
     <!--Encoding filter UTF-8 for all requests-->
     <filter>
         <filter-name>EncodingRequestFilter</filter-name>
