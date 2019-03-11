@@ -48,4 +48,26 @@
         <servlet-class>ua.azbest.servlet.UpdateUserServlet</servlet-class>
     </servlet>
 
+
+    <servlet-mapping>
+        <servlet-name>JsonHandlerServlet</servlet-name>
+        <url-pattern>/json_data</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>JsonHandlerServlet</servlet-name>
+        <servlet-class>ua.azbest.servlet.json.JsonHandlerServlet</servlet-class>
+    </servlet>
+
+
+    <!--Json handler-->
+    <servlet-mapping>
+        <servlet-name>JsonFormServlet</servlet-name>
+        <url-pattern>/json</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>JsonFormServlet</servlet-name>
+        <servlet-class>ua.azbest.servlet.json.JsonFormServlet</servlet-class>
+    </servlet>
 </web-app>
